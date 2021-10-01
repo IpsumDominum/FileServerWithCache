@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.net.*;  
+import java.awt.image.BufferedImage;
 import java.io.*;  
+import java.util.Base64;
+import javax.imageio.ImageIO;
+import java.util.*;
+
    class Client{
       public static void main(String args[]) throws Exception{
         JFrame frame = new JFrame("My First GUI");
@@ -25,9 +30,21 @@ import java.io.*;
             System.out.println("Please Enter a file to retrieve");
             str=br.readLine();  
             dout.writeUTF(str);  
-            dout.flush();  
-            str2=din.readUTF();
-            System.out.println("Server says: "+str2);  
+            dout.flush();
+            //Get in separate blocks...
+            int block_num = 0;
+            block_num = din.readInt();
+            //Get the resulting data...
+            String strBuffer = "";
+            System.out.println("Server:");
+            for(int i=0;i <block_num;i++){
+                str2=din.readUTF();
+                strBuffer += str2;
+            }
+            byte[] decode = Base64.getDecoder().decode(strBuffer);
+            ByteArrayInputStream bis = new ByteArrayInputStream(decode);
+            BufferedImage bImage = ImageIO.read(bis);
+            ImageIO.write(bImage, "bmp", new File("output.bmp") );
         }  
         dout.close();  
         s.close();  

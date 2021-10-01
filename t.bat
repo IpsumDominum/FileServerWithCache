@@ -1,0 +1,3 @@
+javac ListDialog.java
+javac ListDialogRunner.java
+java ListDialogRunner
