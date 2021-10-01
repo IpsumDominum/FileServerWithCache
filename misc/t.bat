@@ -1,2 +1,2 @@
-javac Guitest.java
-java Guitest
+javac Test2.java
+java Test2

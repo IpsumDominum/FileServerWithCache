@@ -48,7 +48,7 @@ public class Test2 {
     double b = 3010363 %4;
     double c = 3010367 %4;
     int amount = 50000;
-    int trials = 1;
+    int trials = 1000;
     int avg = 0;
     for(int j=0;j<trials;j++){
         int count = 0;
@@ -63,7 +63,7 @@ public class Test2 {
     System.out.println("COUNT:");
     System.out.println(avg/trials);
     
-    byte[] fileContent = Files.readAllBytes(Paths.get("./ServerFiles/aaa.jpg"));
+    byte[] fileContent = Files.readAllBytes(Paths.get("../ServerFiles/aaa.jpg"));
     int window_size = 3;
     int zerocount = 0;
     
